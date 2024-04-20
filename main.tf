@@ -3,6 +3,8 @@
 
 provider "aws" {
   region = var.region
+  access_key = "${{ secrets.ACCESS_KEY }}"
+  secret_key = "${{ secrets.SECRET_KEY }}"
   
 }
 
