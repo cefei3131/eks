@@ -16,7 +16,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
+  cluster_name = "Grishkov-eks-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
@@ -28,7 +28,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = "education-vpc"
+  name = "Grishkov-EKS-vpc"
 
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
@@ -69,22 +69,22 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = "grishkov-eks-node-1"
 
-      instance_types = ["t3.small"]
+      instance_types = ["t2.micro"]
 
       min_size     = 1
-      max_size     = 3
-      desired_size = 2
+      max_size     = 1
+      desired_size = 1
     }
 
     two = {
-      name = "node-group-2"
+      name = "grishkov-eks-node-1"
 
-      instance_types = ["t3.small"]
+      instance_types = ["t2.micro"]
 
       min_size     = 1
-      max_size     = 2
+      max_size     = 1
       desired_size = 1
     }
   }
