@@ -3,6 +3,8 @@
 
 provider "aws" {
   region = var.region
+  access_key = "AKIARNGVWZTHKCTKXTUF"
+  secret_key = "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"
 }
 
 # Filter out local zones, which are not currently supported 
