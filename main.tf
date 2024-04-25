@@ -127,7 +127,7 @@ resource "aws_ecr_repository" "my_ecr_repo" {
 }
 terraform {
   backend "s3" {
-    profile        = "grishkov"
+    
     bucket         = "grishkov--use1-az4--x-s3"
     encrypt        = true
     key            = "Dev/terraform.state"
