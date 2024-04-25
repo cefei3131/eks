@@ -117,3 +117,21 @@ resource "aws_eks_addon" "ebs-csi" {
     "terraform" = "true"
   }
 }
+
+resource "aws_ecr_repository" "my_ecr_repo" {
+  name                 = "ecr-repo-grishkov" # Name of the repository
+  image_tag_mutability = "MUTABLE"
+  image_scanning_configuration {
+    scan_on_push = false
+  }
+}
+terraform {
+  backend "s3" {
+    profile        = "grishkov"
+    bucket         = "grishkov--use1-az4--x-s3"
+    encrypt        = true
+    key            = "Dev/terraform.state"
+    region         = "us-east-1"
+    dynamodb_table = "grishkov-ddb"
+  }
+}
